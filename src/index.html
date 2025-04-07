@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap"
+            rel="stylesheet">
+        <title>Download video and image</title>
+        <style>
+        * {
+            font-family: 'Quicksand', sans-serif;
+            box-sizing: border-box;
+        }
+        .nav li:hover{
+            text-decoration: underline 2px solid var(--color-green-800);
+        }
+        .nav li.active {
+            text-decoration: underline 2px solid var(--color-green-800);
+        }
+        .image-items img:not(:last-child) {
+            border-right: 2px solid #ccc;
+        }
+    </style>
+    </head>
+    <body class="relative">
+        <div
+            class="w-full min-h-screen h-full flex flex-col pt-[30px] items-center gap-5 bg-pink-200">
+            <h1
+                class="w-full mx-auto text-center text-blue-500 text-3xl font-bold">Dowload video and image</h1>
+            <div
+                class="nav w-[200px] flex justify-between items-center list-none text-2xl text-green-800 cursor-pointer outline-none">
+                <li id="video-option" class="active">Video</li>
+                <li id="image-option">Image</li>
+            </div>
+            <div class="view-option flex flex-col font-[500] text-lg">
+                <label for="preview-option flex items-center">
+                    <input type="radio" id="preview-option" value="1"
+                        name="download-option" checked>
+                    <span class="ml-2">Xem trước</span>
+                </label>
+                <label for="download-option">
+                    <input type="radio" id="download-option" value="2"
+                        name="download-option">
+                    <span class="ml-2">Tải về nhanh (cho phép hình ảnh)</span>
+                </label>
+            </div>
+            <div class="input-url flex justify-between items-center w-[500px] gap-4">
+                <input type="text" id="url-input"
+                    class="border-2 border-blue-300 w-[350px] h-[50px] rounded-[5px] ml-2 text-2xl bg-white">
+                <button id="submit"
+                    class="w-[100px] shadow border-1 p-[10px] rounded-[5px] bg-blue-500 text-white font-[500] cursor-pointer transition duration-250 hover:bg-blue-400">Tìm
+                    kiếm</button>
+                    <span class="refresh"><i class="fa-solid fa-rotate-right scale-150 transition duration-150 p-1.5 rounded-[50%] cursor-pointer hover:bg-white"></i></span>
+            </div>
+            <div>
+                <h1 class="not-found-data text-center text-red-700 font-bold hidden">Không tìm thấy video / hình ảnh nào ! Vui lòng thử lại !</h1>
+                <div id="video-container" class="flex justify-center items-center flex-col gap-10">
+                    <div class="font-bold text-lg">Tìm thấy <span id="count-videos"></span> video
+                    </div>
+                    <div
+                        class="w-full video-items flex justify-center gap-10 flex-wrap">
+                    </div>
+                </div>
+                <div id="image-container"
+                    class="flex justify-center items-center flex-col gap-5">
+                    <div class="font-bold text-lg">Tìm thấy
+                        <span id="count-images"></span> hình ảnh
+                    </div>
+                    <div
+                        class="w-full image-items flex justify-center gap-10 flex-wrap"></div>
+                </div>
+            </div>
+            <div id="loading" class="loading w-screen h-screen absolute z-10 top-0 bg-[rgba(255,255,255,0.6)] z-10 hidden">
+                <div class="spinner flex flex-col items-center justify-center h-screen">
+                    <img src="loading.svg" alt="">
+                    <span class="font-bold text-xl">Đang tải ...</span>
+                </div>
+            </div>
+        </body>
+<script src="https://kit.fontawesome.com/4d766cea8d.js" crossorigin="anonymous"></script>
+<script src="./index.js"></script>
+    </html>

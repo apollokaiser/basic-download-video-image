@@ -7,6 +7,7 @@ const countVideo = document.getElementById('count-videos');
 const countImage = document.getElementById('count-images');
 const videoContainer = document.getElementById('video-container');
 const imageContainer = document.getElementById('image-container');
+const refreshButton = document.querySelector(".refresh")
 videoContainer.style.display = 'none';
 imageContainer.style.display = 'none';
 let selectedMediaType = "video";
@@ -26,6 +27,13 @@ downloadOption.forEach(option => {
     option.addEventListener("change", e => {
         selectedDownloadOption = e.target.value;
     })
+})
+refreshButton.addEventListener("click", (e) => {
+    videoContainer.style.display = 'none';
+    imageContainer.style.display = 'none';
+    countVideo.textContent = 0;
+    countImage.textContent = 0;
+    urlInput.value = "";
 })
 submitButton.addEventListener("click", async (e) => {
     e.preventDefault();
